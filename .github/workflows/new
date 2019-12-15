@@ -1,0 +1,47 @@
+
+def fact(n,r):
+  j = r
+
+  subtraction = n-r
+  h = subtraction
+  factorial2 = 1
+  factorial1 = 1
+  factorial = 1
+  while(n>1):
+    p=n
+    q = p * (n-1)
+    n -= 2
+    factorial = factorial * q
+  while(r>1):
+      p = r
+      q = p * (r - 1)
+      r -= 2
+      factorial1 = factorial1 * q
+      A = factorial // factorial1
+  while(subtraction>1):
+      p = subtraction
+      q = p * (subtraction - 1)
+      subtraction -= 2
+      factorial2 = factorial2 * q
+
+
+
+
+
+
+  print(A // factorial2 )
+  l = pow(1 / 2, j)
+
+  o = pow(1 / 2, h)
+
+  formula = (A // factorial2) * l * o
+  print(formula)
+
+print("Enter all events and positive events")
+fact(int(input()),int(input()))
+
+
+
+
+
+
