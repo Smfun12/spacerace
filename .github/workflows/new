@@ -1,47 +1,122 @@
-
-def fact(n,r):
-  j = r
-
-  subtraction = n-r
-  h = subtraction
-  factorial2 = 1
-  factorial1 = 1
-  factorial = 1
-  while(n>1):
-    p=n
-    q = p * (n-1)
-    n -= 2
-    factorial = factorial * q
-  while(r>1):
-      p = r
-      q = p * (r - 1)
-      r -= 2
-      factorial1 = factorial1 * q
-      A = factorial // factorial1
-  while(subtraction>1):
-      p = subtraction
-      q = p * (subtraction - 1)
-      subtraction -= 2
-      factorial2 = factorial2 * q
+def factorial(n):
+    return 1 if n <= 1 else n * factorial(n - 1)
 
 
+def tail_factorial(n):
+    def f(n, buff):
+        return 1 if n == 1 else f(n - 1, buff * n)
+
+    return f(n, 1)
 
 
+def loop_factorial(n):
+    buff = 1
+    for i in range(1, n + 1):
+        buff = buff * i
+    return buff
 
 
-  print(A // factorial2 )
-  l = pow(1 / 2, j)
+def fact(n, r):
+    j = r
 
-  o = pow(1 / 2, h)
+    subtraction = n - r
+    h = subtraction
+    factorial2 = 1
+    factorial1 = 1
+    factorial = 1
+    while (n > 1):
+        p = n
+        q = p * (n - 1)
+        n -= 2
+        factorial = factorial * q
+    while (r > 1):
+        p = r
+        q = p * (r - 1)
+        r -= 2
+        factorial1 = factorial1 * q
+        A = factorial // factorial1
+    while (subtraction > 1):
+        p = subtraction
+        q = p * (subtraction - 1)
+        subtraction -= 2
+        factorial2 = factorial2 * q
 
-  formula = (A // factorial2) * l * o
-  print(formula)
+    print(A // factorial2)
+    l = pow(1 / 2, j)
+
+    o = pow(1 / 2, h)
+
+    formula = (A // factorial2) * l * o
+    print(formula)
+
+
+def bernulli(n, k):
+    p = 0.5
+    q = 0.5
+    c = loop_factorial(n) / (loop_factorial(k) * loop_factorial(n - k))
+    return c * pow(p, k) * pow(q, n - k)
+
 
 print("Enter all events and positive events")
-fact(int(input()),int(input()))
+print(bernulli(3, 1))
+def factorial(n):
+    return 1 if n <= 1 else n * factorial(n - 1)
 
 
+def tail_factorial(n):
+    def f(n, buff):
+        return 1 if n == 1 else f(n - 1, buff * n)
+
+    return f(n, 1)
 
 
+def loop_factorial(n):
+    buff = 1
+    for i in range(1, n + 1):
+        buff = buff * i
+    return buff
 
 
+def fact(n, r):
+    j = r
+
+    subtraction = n - r
+    h = subtraction
+    factorial2 = 1
+    factorial1 = 1
+    factorial = 1
+    while (n > 1):
+        p = n
+        q = p * (n - 1)
+        n -= 2
+        factorial = factorial * q
+    while (r > 1):
+        p = r
+        q = p * (r - 1)
+        r -= 2
+        factorial1 = factorial1 * q
+        A = factorial // factorial1
+    while (subtraction > 1):
+        p = subtraction
+        q = p * (subtraction - 1)
+        subtraction -= 2
+        factorial2 = factorial2 * q
+
+    print(A // factorial2)
+    l = pow(1 / 2, j)
+
+    o = pow(1 / 2, h)
+
+    formula = (A // factorial2) * l * o
+    print(formula)
+
+
+def bernulli(n, k):
+    p = 0.5
+    q = 0.5
+    c = loop_factorial(n) / (loop_factorial(k) * loop_factorial(n - k))
+    return c * pow(p, k) * pow(q, n - k)
+
+
+print("Enter all events and positive events")
+print(bernulli(3, 1))
