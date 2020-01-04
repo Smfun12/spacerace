@@ -1,0 +1,65 @@
+import math
+
+
+def triangle(a, b, c):
+    if (a + b) > c and (a + c) > b and (b + c) > a:
+        def angles(a, b, c):
+            if c > a and c > b:
+                return "The angle in sin against c", math.cos(
+                    (pow(a, 2) + pow(b, 2) - pow(c, 2)) / (2 * a * b)), "The angle in sin against b", math.cos(
+                    (pow(a, 2) + pow(c, 2) - pow(b, 2)) / (2 * a * c)), "The angle in sin against a", math.cos(
+                    (pow(c, 2) + pow(b, 2) - pow(a, 2)) / (2 * c * b))
+            elif b > a and b > c:
+                return "The angle in sin against b", math.cos((pow(a, 2) + pow(c, 2) - pow(b, 2)) / (2 * a * c))
+            elif a > b and a > c:
+                return "The angle in sin against a", math.cos((pow(b, 2) + pow(c, 2) - pow(a, 2)) / (2 * b * c))
+            else:
+                return "All angles are 60 degrees"
+
+        def surface_area(a, b, c):
+            if triangle_type(a, b, c) == "Equilateral":
+                return "The surface area is :", (pow(max(a, b, c), 2) * pow(3, 1 / 2)) / 4
+
+            else:
+                half_perimeter = (a + b + c) / 2
+                result = pow(half_perimeter * (half_perimeter - a) * (half_perimeter - b) * (half_perimeter - c), 1 / 2)
+                return "The surface_area is :", result
+
+        def max3(a, b, c):
+            if a > b and a > c:
+                return "The max is a:", a
+
+            elif b > c and b > a:
+                return "The max is b:", b
+            elif c > a and c > a:
+                return "The max is c:", c
+
+        def triangle_type(a, b, c):
+            x = pow(a, 2) + pow(b, 2)
+            y = pow(a, 2) + pow(c, 2)
+            z = pow(b, 2) + pow(c, 2)
+
+            if a == b == c:
+                return "Equilateral"
+            elif a == b or b == c or a == c:
+                return "Isosceles"
+            elif x == pow(c, 2) or y == pow(b, 2) or z == pow(a, 2):
+                return "Right"
+            else:
+                return "Trivial"
+
+        def circle_surface_area(a, b, c):
+            if triangle_type(a, b, c) == "Right":
+                return "The surface_are of outer circle is :", max(a, b,
+                                                                   c) / 2, "The surface_are of inner circle is :", (
+                               -max(a, b, c) + min(a, b, c) + b) / 2
+            elif triangle_type(a, b, c) == "Equilateral":
+                return "The surface_are of outer circle is :", (max(a, b, c)) / pow(2, 1 / 2), \
+                       "The surface_are of inner circle is :", max(a, b, c) / (2 * pow(2, 1 / 2))
+
+        return angles(a, b, c), surface_area(a, b, c), triangle_type(a, b, c), circle_surface_area(a, b, c)
+    else:
+        return "Triangle can't be exist"
+
+
+print(triangle(int(input()), int(input()), int(input())))
