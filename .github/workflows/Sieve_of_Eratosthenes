@@ -1,0 +1,18 @@
+def sieve_of_eratosthenes(down_boundary, upper_boundary):
+    a = set()
+    b = set()
+    for i in range(down_boundary, upper_boundary):
+        n = i ** 2
+        while n <= upper_boundary:
+            a.add(n)
+
+            n += i
+
+    a.intersection(a)
+
+    for x in range(down_boundary, upper_boundary):
+        b.add(x)
+    return sorted(b.difference(a))
+
+
+print(sieve_of_eratosthenes(int(input()), int(input())))
