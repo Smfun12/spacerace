@@ -4,7 +4,7 @@ def factorial(n):
 
 def tail_factorial(n):
     def f(n, buff):
-        return 1 if n == 1 else f(n - 1, buff * n)
+        return buff if n == 1 else f(n - 1, buff * n)
 
     return f(n, 1)
 
