@@ -1,0 +1,33 @@
+def tail_factorial(n):
+    def function(j, temp):
+        if j == 1:
+            return temp
+        return function(j - 1, j * temp)
+
+    return function(n, 1)
+
+
+def factorial(n):
+    return 1 if n == 1 else n * factorial(n - 1)
+
+
+def fibonacci(n):
+    if n == 1:
+        return 1
+    if n == 0:
+        return 0
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+
+def tail_fibonacci(n):
+    def function(j, start, temp):
+        if j == 1:
+            return temp
+        if j == 0:
+            return j
+        return function(j - 1, temp, start+temp)
+
+    return function(n, 0, 1)
+
+
+print(tail_fibonacci(3))
